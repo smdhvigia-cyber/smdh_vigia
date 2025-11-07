@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Que é Violência Doméstica? - Voz da Mulher</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        /* Estilos do tema */
+        .pink-gradient {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        /* Botão de Saída Rápida Discreto (Aprimorado) */
+        .emergency-exit-btn {
+            background-color: #374151;
+            color: #d1d5db;
+            transition: background-color 0.3s;
+        }
+        .emergency-exit-btn:hover {
+            background-color: #1f2937;
+        }
+        /* Estilo para a barra lateral de navegação */
+        .sidebar-link {
+            transition: all 0.2s;
+        }
+        .sidebar-link.active {
+            background-color: #db2777; /* pink-700 */
+            color: white;
+            border-left: 5px solid #ec4899; /* pink-500 */
+            font-weight: bold;
+        }
+        /* Garantindo o sticky da sidebar */
+        .sticky-sidebar {
+            position: sticky;
+            top: 20px; /* Ajuste a margem do topo */
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+
+<a href="https://wa.me/559184129007" class="fixed bottom-20 right-6 bg-red-600 text-white px-6 py-3 rounded-full shadow-xl flex items-center z-50 hover:bg-red-800 transition transform hover:scale-110 viatura-btn-urgencia">
+    <i data-feather="phone-call" class="mr-2 w-5 h-5"></i> VIATURA DA POLÍCIA
+</a>
+
+<a href="https://deamvirtual.pc.pa.gov.br/violencia_contra_mulher/" class="fixed bottom-6 right-6 bg-pink-600 text-white px-6 py-3 rounded-full shadow-lg flex items-center z-50 hover:bg-pink-700 transition transform hover:scale-105">
+    <i data-feather="message-circle" class="mr-2 w-5 h-5"></i> DENUNCIE AGORA !
+</a>
+
+    <div class="container mx-auto px-4 py-4 max-w-7xl bg-white shadow-xl min-h-screen">
+
+        <header class="sticky top-0 z-50 bg-white shadow-lg">
+    <div class="container mx-auto px-4 py-4 max-w-7xl flex justify-between items-center">
+        <a href="index.html" class="flex items-center">
+            <img src="https://i.imgur.com/QtGQAZ4.jpeg" width="300px" alt="Logo Secretaria da Mulher">
+        </a>
+
+        <nav class="hidden md:flex space-x-6 items-center">
+            <a href="index.html" class="text-gray-700 hover:text-pink-600 transition font-medium text-lg">Início</a>
+            <a href="violencia.html" class="text-gray-700 hover:text-pink-600 transition font-medium text-lg">Informação</a>
+            <a href="apoio.html" class="text-gray-700 hover:text-pink-600 transition font-medium text-lg">Apoio</a>
+
+            <a href="ajuda.html" class="bg-red-600 text-white px-5 py-2 rounded-full font-bold shadow-md hover:bg-red-700 transition transform hover:scale-105 flex items-center text-lg">
+                <i data-feather="map-pin" class="mr-2 w-5 h-5"></i> Onde Buscar Ajuda
+            </a>
+        </nav>
+
+        <button id="menu-btn" class="md:hidden text-gray-700 hover:text-pink-600 transition p-2 focus:outline-none">
+            <i data-feather="menu" class="w-7 h-7"></i>
+        </button>
+    </div>
+</header>
+
+<div id="mobile-menu" class="hidden fixed inset-0 z-50 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center transition-opacity duration-300">
+    <div class="bg-white w-11/12 max-w-md p-8 rounded-xl shadow-2xl relative">
+        <button id="close-menu" class="absolute top-4 right-4 text-gray-600 hover:text-red-600 transition p-2">
+            <i data-feather="x" class="w-7 h-7"></i>
+        </button>
+
+        <nav class="flex flex-col space-y-6 text-center">
+            <a href="index.html" class="text-gray-800 text-2xl font-semibold hover:text-pink-600 transition py-2 border-b">Início</a>
+            <a href="violencia.html" class="text-gray-800 text-2xl font-semibold hover:text-pink-600 transition py-2 border-b">Informação</a>
+            <a href="apoio.html" class="text-gray-800 text-2xl font-semibold hover:text-pink-600 transition py-2 border-b">Apoio</a>
+
+            <a href="ajuda.html" class="mt-4 bg-red-600 text-white px-5 py-3 rounded-xl font-bold text-xl shadow-lg hover:bg-red-700 transition transform hover:scale-105 flex items-center justify-center">
+                <i data-feather="map-pin" class="mr-2 w-6 h-6"></i> Onde Buscar Ajuda
+            </a>
+        </nav>
+    </div>
+</div>
+
+        <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 my-6" role="alert" data-aos="fade-down">
+            <p class="font-bold">ALERTA:</p>
+            <p>Se você corre risco de vida, ligue **190** (Polícia Militar). Para denúncias e orientações, ligue **180**.</p>
+        </div>
+
+        <h1 class="text-4xl font-extrabold text-gray-800 mb-2 mt-8" data-aos="fade-right">
+            <i data-feather="book-open" class="text-pink-600 inline-block mr-2 w-8 h-8"></i>
+            Violência Doméstica: Conheça Seus Direitos
+        </h1>
+        <p class="text-xl text-gray-600 mb-6" data-aos="fade-right" data-aos-delay="100">A Lei Maria da Penha define **cinco formas de violência**. É essencial que você saiba identificar cada uma delas.</p>
+
+        <div class="content-area flex flex-col md:flex-row gap-6">
+
+            <div class="sidebar flex-shrink-0 w-full md:w-64 bg-pink-100 p-4 rounded-lg shadow-md h-fit sticky-sidebar">
+                <h3 class="text-lg font-bold text-pink-700 mb-3 border-b border-pink-300 pb-2">
+                    Tipos de Violência:
+                </h3>
+                <a href="#fisica" class="sidebar-link active bg-white text-gray-800 block p-3 rounded-md mb-2 hover:bg-pink-200">1. Física</a>
+                <a href="#psicologica" class="sidebar-link bg-white text-gray-800 block p-3 rounded-md mb-2 hover:bg-pink-200">2. Psicológica</a>
+                <a href="#moral" class="sidebar-link bg-white text-gray-800 block p-3 rounded-md mb-2 hover:bg-pink-200">3. Moral</a>
+                <a href="#sexual" class="sidebar-link bg-white text-gray-800 block p-3 rounded-md mb-2 hover:bg-pink-200">4. Sexual</a>
+                <a href="#patrimonial" class="sidebar-link bg-white text-gray-800 block p-3 rounded-md mb-2 hover:bg-pink-200">5. Patrimonial</a>
+            </div>
+
+            <div class="main-content flex-1 bg-white p-6 rounded-lg shadow-lg">
+
+                <div id="fisica" class="type-section border-b border-gray-200 pb-8 mb-8" data-aos="fade-up">
+
+                    <div class="examples list-disc pl-5 space-y-2 text-gray-600 bg-pink-50 p-4 rounded-md">
+                      <h2 class="text-3xl font-bold text-pink-700 mb-4 flex items-center">
+                        <i data-feather="frown" class="mr-2 w-6 h-6"></i> 1. Violência Física
+                    </h2>
+                    <p class="mb-4 text-gray-700"><strong>Definição Legal:</strong> Qualquer conduta que **ofenda a integridade ou saúde corporal** da mulher.</p>
+                    </div>
+
+                    <ul class="examples list-disc pl-5 space-y-2 text-gray-600 bg-pink-50 p-4 rounded-md">
+                        <p class="font-bold text-gray-800">Exemplos Práticos:</p>
+                        <li>Bater, chutar, empurrar, sacudir ou morder.</li>
+                        <li>Queimar ou cortar intencionalmente.</li>
+                        <li>Arremessar objetos na sua direção.</li>
+                        <li>Obrigá-la a ingerir bebida alcoólica, drogas ou medicamentos.</li>
+                    </ul>
+
+                </div>
+
+                <div id="psicologica" class="type-section border-b border-gray-200 pb-8 mb-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="examples list-disc pl-5 space-y-2 text-gray-600 bg-pink-50 p-4 rounded-md">
+                        <h2 class="text-3xl font-bold text-pink-700 mb-4 flex items-center">
+                            <i data-feather="eye-off" class="mr-2 w-6 h-6"></i> 2. Violência Psicológica
+                        </h2>
+                        <p class="mb-4 text-gray-700"><strong>Definição Legal:</strong> Qualquer conduta que cause **dano emocional**, diminuição da autoestima, ou vise **degradar ou controlar suas ações**, crenças e decisões.</p>
+                    </div>
+                    <ul class="examples list-disc pl-5 space-y-2 text-gray-600 bg-pink-50 p-4 rounded-md">
+                        <p class="font-bold text-gray-800">Exemplos Práticos:</p>
+                        <li>**Ameaças, humilhações** e insultos constantes.</li>
+                        <li>**Controle** sobre a vida social (impedir contato com amigos ou familiares).</li>
+                        <li>**Vigilância constante** (revistar celular, exigir senhas).</li>
+                        <li>Destruir documentos ou objetos pessoais para controlar a vítima.</li>
+                    </ul>
+                </div>
+
+                <div id="moral" class="type-section border-b border-gray-200 pb-8 mb-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="examples list-disc pl-5 space-y-2 text-gray-600 bg-pink-50 p-4 rounded-md">
+                        <h2 class="text-3xl font-bold text-pink-700 mb-4 flex items-center">
+                            <i data-feather="message-circle" class="mr-2 w-6 h-6"></i> 3. Violência Moral
+                        </h2>
+                        <p class="mb-4 text-gray-700"><strong>Definição Legal:</strong> Qualquer conduta que configure **calúnia, difamação ou injúria**.</p>
+                    </div>
+                    <ul class="examples list-disc pl-5 space-y-2 text-gray-600 bg-pink-50 p-4 rounded-md">
+                        <p class="font-bold text-gray-800">Exemplos Práticos:</p>
+                        <li>**Acusar falsamente** a mulher de ter cometido um crime (Calúnia).</li>
+                        <li>**Espalhar boatos** ou informações falsas que denigrem a imagem da mulher (Difamação).</li>
+                        <li>Proferir **xingamentos ou ofensas** que atinjam a sua dignidade (Injúria).</li>
+                    </ul>
+                </div>
+
+                <div id="sexual" class="type-section border-b border-gray-200 pb-8 mb-8" data-aos="fade-up" data-aos-delay="300">
+                    <div class="examples list-disc pl-5 space-y-2 text-gray-600 bg-pink-50 p-4 rounded-md">
+                        <h2 class="text-3xl font-bold text-pink-700 mb-4 flex items-center">
+                            <i data-feather="user-x" class="mr-2 w-6 h-6"></i> 4. Violência Sexual
+                        </h2>
+                        <p class="mb-4 text-gray-700"><strong>Definição Legal:</strong> Qualquer conduta que a **constranja a presenciar, a manter ou a participar de relação sexual não desejada**, mediante intimidação, ameaça, coação ou uso da força.</p>
+                    </div>
+                    <ul class="examples list-disc pl-5 space-y-2 text-gray-600 bg-pink-50 p-4 rounded-md">
+                        <p class="font-bold text-gray-800">Exemplos Práticos:</p>
+                        <li>Obrigá-la a fazer, presenciar ou participar de atos sexuais que ela não quer.</li>
+                        <li>**Impedir o uso de métodos contraceptivos** ou forçar a gravidez/aborto.</li>
+                        <li>Obrigá-la a se despir ou ter relações com outras pessoas.</li>
+                    </ul>
+                </div>
+
+                <div id="patrimonial" class="type-section pb-8 mb-8" data-aos="fade-up" data-aos-delay="400">
+                    <div class="examples list-disc pl-5 space-y-2 text-gray-600 bg-pink-50 p-4 rounded-md">
+                        <h2 class="text-3xl font-bold text-pink-700 mb-4 flex items-center">
+                            <i data-feather="dollar-sign" class="mr-2 w-6 h-6"></i> 5. Violência Patrimonial
+                        </h2>
+                        <p class="mb-4 text-gray-700"><strong>Definição Legal:</strong> Qualquer conduta que configure retenção, subtração, destruição parcial ou total de seus **bens, instrumentos de trabalho, documentos pessoais, valores** e direitos.</p>
+                    </div>
+                    <ul class="examples list-disc pl-5 space-y-2 text-gray-600 bg-pink-50 p-4 rounded-md">
+                        <p class="font-bold text-gray-800">Exemplos Práticos:</p>
+                        <li>**Quebrar ou danificar** pertences, objetos de afeto ou documentos.</li>
+                        <li>**Reter documentos pessoais** (RG, CPF, Carteira de Trabalho).</li>
+                        <li>**Controlar o dinheiro** da mulher, impedindo-a de ter sua própria renda.</li>
+                        <li>Subtrair valores ou bens em comum.</li>
+                    </ul>
+                </div>
+
+                <a href="ajuda.html" class="action-link bg-pink-600 text-white hover:bg-pink-700 transition p-4 rounded-full font-extrabold text-xl shadow-lg mt-8 flex items-center justify-center" data-aos="zoom-in-up">
+                    <i data-feather="arrow-right-circle" class="mr-2 w-6 h-6"></i> ME IDENTIFIQUEI. PRECISO DE AJUDA. ONDE DENUNCIAR?
+                </a>
+
+            </div>
+        </div>
+
+        <footer class="bg-gray-800 text-white py-8 mt-10" data-aos="fade-up">
+        <div class="container mx-auto px-4 text-center">
+
+            <p class="text-xl font-bold mb-4">Telefones Úteis: <span class="text-red-500">180</span> (Denúncia) e <span class="text-red-500">190</span> (Emergência)</p>
+
+           <p class="text-gray-400 mb-2">Secretaria da Mulher e da Diversidade Humana. | Projeto de ensino extensionista</p>
+            <div class="mt-4">
+                <span class="text-xs text-gray-500">Desenvolvido por JOSÉ AIRTON B. S. JUNIOR - fone:(91)983252639</span>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 2. INICIALIZAÇÃO DO AOS
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+
+            feather.replace();
+
+            // Lógica para destacar o link lateral ativo ao rolar (EXISTENTE)
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+            const sections = document.querySelectorAll('.type-section');
+
+            function setActiveLink() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    // Ajuste o valor '100' para definir o quanto antes a seção deve ativar o link
+                    if (pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('active');
+                    link.classList.remove('text-pink-700');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', setActiveLink);
+            setActiveLink();
+
+            // Lógica para suavizar o scroll ao clicar no link (EXISTENTE)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 90, // Ajustado para compensar a margem do topo
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Mobile menu toggle
+    document.getElementById('menu-btn').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.remove('hidden');
+        // Opcional: Adiciona um efeito de fade
+        // document.getElementById('mobile-menu').style.opacity = '1';
+    });
+
+    document.getElementById('close-menu').addEventListener('click', function() {
+        // Opcional: Adiciona um efeito de fade
+        // document.getElementById('mobile-menu').style.opacity = '0';
+        // setTimeout(() => {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        // }, 300); // 300ms para corresponder à transição, se você usar o fade
+    });
+    </script>
+</body>
+</html>

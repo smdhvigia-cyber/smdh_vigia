@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onde Buscar Ajuda - Rede de Atendimento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        /* Estilos do tema */
+        .pink-gradient {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        /* Botão de Saída Rápida Discreto (Aprimorado) */
+        .emergency-exit-btn {
+            background-color: #374151; /* Cinza escuro para ser discreto */
+            color: #d1d5db; /* Texto claro */
+            transition: background-color 0.3s;
+        }
+        .emergency-exit-btn:hover {
+            background-color: #1f2937; /* Fundo ainda mais escuro no hover */
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+
+<a href="https://wa.me/559184129007" class="fixed bottom-20 right-6 bg-red-600 text-white px-6 py-3 rounded-full shadow-xl flex items-center z-50 hover:bg-red-800 transition transform hover:scale-110 viatura-btn-urgencia">
+    <i data-feather="phone-call" class="mr-2 w-5 h-5"></i> VIATURA DA POLÍCIA
+</a>
+
+<a href="https://deamvirtual.pc.pa.gov.br/violencia_contra_mulher/" class="fixed bottom-6 right-6 bg-pink-600 text-white px-6 py-3 rounded-full shadow-lg flex items-center z-50 hover:bg-pink-700 transition transform hover:scale-105">
+    <i data-feather="message-circle" class="mr-2 w-5 h-5"></i> DENUNCIE AGORA !
+</a>
+
+    <div class="container mx-auto px-4 py-4 max-w-7xl bg-white shadow-xl min-h-screen">
+
+        <header class="sticky top-0 z-50 bg-white shadow-lg">
+    <div class="container mx-auto px-4 py-4 max-w-7xl flex justify-between items-center">
+        <a href="index.html" class="flex items-center">
+            <img src="https://i.imgur.com/QtGQAZ4.jpeg" width="300px" alt="Logo Secretaria da Mulher">
+        </a>
+
+        <nav class="hidden md:flex space-x-6 items-center">
+            <a href="index.html" class="text-gray-700 hover:text-pink-600 transition font-medium text-lg">Início</a>
+            <a href="violencia.html" class="text-gray-700 hover:text-pink-600 transition font-medium text-lg">Informação</a>
+            <a href="apoio.html" class="text-gray-700 hover:text-pink-600 transition font-medium text-lg">Apoio</a>
+
+            <a href="ajuda.html" class="bg-red-600 text-white px-5 py-2 rounded-full font-bold shadow-md hover:bg-red-700 transition transform hover:scale-105 flex items-center text-lg">
+                <i data-feather="map-pin" class="mr-2 w-5 h-5"></i> Onde Buscar Ajuda
+            </a>
+        </nav>
+
+        <button id="menu-btn" class="md:hidden text-gray-700 hover:text-pink-600 transition p-2 focus:outline-none">
+            <i data-feather="menu" class="w-7 h-7"></i>
+        </button>
+    </div>
+</header>
+
+<div id="mobile-menu" class="hidden fixed inset-0 z-50 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center transition-opacity duration-300">
+    <div class="bg-white w-11/12 max-w-md p-8 rounded-xl shadow-2xl relative">
+        <button id="close-menu" class="absolute top-4 right-4 text-gray-600 hover:text-red-600 transition p-2">
+            <i data-feather="x" class="w-7 h-7"></i>
+        </button>
+
+        <nav class="flex flex-col space-y-6 text-center">
+            <a href="index.html" class="text-gray-800 text-2xl font-semibold hover:text-pink-600 transition py-2 border-b">Início</a>
+            <a href="violencia.html" class="text-gray-800 text-2xl font-semibold hover:text-pink-600 transition py-2 border-b">Informação</a>
+            <a href="apoio.html" class="text-gray-800 text-2xl font-semibold hover:text-pink-600 transition py-2 border-b">Apoio</a>
+
+            <a href="ajuda.html" class="mt-4 bg-red-600 text-white px-5 py-3 rounded-xl font-bold text-xl shadow-lg hover:bg-red-700 transition transform hover:scale-105 flex items-center justify-center">
+                <i data-feather="map-pin" class="mr-2 w-6 h-6"></i> Onde Buscar Ajuda
+            </a>
+        </nav>
+    </div>
+</div>
+
+        <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 my-6" role="alert" data-aos="fade-down">
+            <p class="font-bold">ALERTA:</p>
+            <p>Se a emergência é imediata e você corre risco de vida, ligue **190** (Polícia Militar). Para denúncias anônimas, ligue **180**.</p>
+        </div>
+
+        <h1 class="text-3xl font-bold text-gray-800 mb-2 mt-8 border-b-2 border-pink-600 pb-2" data-aos="fade-right">
+            <i data-feather="map-pin" class="text-pink-600 inline-block mr-2 w-7 h-7"></i>
+            Encontre a Rede de Ajuda mais Próxima
+        </h1>
+        <p class="text-gray-600 mb-6" data-aos="fade-right" data-aos-delay="100">A rede de enfrentamento à violência é composta por serviços de Segurança, Justiça, Saúde e Assistência Social, prontos para te acolher.</p>
+        <a href="mapa.html" class="action-link bg-pink-600 text-white hover:bg-pink-700 transition p-4 rounded-full font-extrabold text-xl shadow-lg mt-8 flex items-center justify-center" data-aos="zoom-in-up">
+            <i data-feather="arrow-right-circle" class="mr-2 w-6 h-6"></i> PONTOS DE APOIO !
+        </a>
+        <div class="filter-area bg-pink-50 p-6 rounded-lg shadow-inner mb-8" data-aos="fade-up">
+            <h3 class="text-xl font-bold text-pink-700 mb-4 flex items-center" data-aos="fade-right">
+                <i data-feather="search" class="mr-2 w-5 h-5"></i> Onde estamos Localizados:
+            </h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d912.934536888669!2d-48.13961028708488!3d-0.8482551491440015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a681002906f5c1%3A0xab3979cf51bcc2a2!2sSecretaria%20da%20Mulher%20e%20Diversidade%20Humana!5e1!3m2!1spt-BR!2sbr!4v1760572540077!5m2!1spt-BR!2sbr" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+<h2 class="text-2xl font-bold text-gray-800 mb-6" data-aos="fade-right">Resultados Encontrados (<span class="text-pink-600">4</span> serviços)</h2>
+
+        <div class="result-list grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+
+            <div class="service-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition border-t-4 border-pink-600" data-aos="zoom-in-up" data-aos-delay="100">
+                <h4 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
+                    <i data-feather="zap" class="mr-2 w-5 h-5 text-pink-600"></i> Delegacia Especializada da Mulher (DEAM)
+                </h4>
+                <p class="text-sm text-pink-600 mb-3 font-semibold">Tipo: Segurança Pública - Localização Mais Próxima (Castanhal)</p>
+                <p class="text-gray-600 flex items-start mb-1"><i data-feather="map-pin" class="w-4 h-4 mr-2 mt-1 text-gray-500"></i> Tv. Primeiro de Maio, 1376 - Nova Olinda, **Castanhal** - PA</p>
+                <p class="text-gray-600 flex items-start mb-1"><i data-feather="phone" class="w-4 h-4 mr-2 mt-1 text-gray-500"></i> (91) 98561-5102</p>
+                <p class="text-green-600 flex items-start mb-3 font-semibold"><i data-feather="clock" class="w-4 h-4 mr-2 mt-1"></i> Funcionamento: **24 Horas**</p>
+                <a href="https://maps.google.com/?cid=1321796612552376923&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="map-link inline-flex items-center text-pink-600 font-bold hover:underline">
+                    Ver no Mapa (54,7 km) <i data-feather="external-link" class="ml-1 w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="service-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition border-t-4 border-pink-600" data-aos="zoom-in-up" data-aos-delay="200">
+                <h4 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
+                    <i data-feather="heart" class="mr-2 w-5 h-5 text-pink-600"></i> Centro de Referência Especializado (CREAS)
+                </h4>
+                <p class="text-sm text-pink-600 mb-3 font-semibold">Tipo: Assistência Social, Psicossocial e Orientação Jurídica</p>
+                <p class="text-gray-600 flex items-start mb-1"><i data-feather="map-pin" class="w-4 h-4 mr-2 mt-1 text-gray-500"></i> **Santana de Medeiros, 321 - Vigia de Nazaré**</p>
+                <p class="text-gray-600 flex items-start mb-1"><i data-feather="phone" class="w-4 h-4 mr-2 mt-1 text-gray-500"></i> email: creasvigiadenazare@gmail.com</p>
+                <p class="text-orange-600 flex items-start mb-3 font-semibold"><i data-feather="clock" class="w-4 h-4 mr-2 mt-1"></i> Funcionamento: Seg a Sex, 8h às 17h (Horário Estimado)</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=-0.8497789043564353,-48.13782062703114" target="_blank" class="map-link inline-flex items-center text-pink-600 font-bold hover:underline">
+                    Ver no Mapa <i data-feather="external-link" class="ml-1 w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="service-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition border-t-4 border-pink-600" data-aos="zoom-in-up" data-aos-delay="300">
+                <h4 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
+                    <i data-feather="gavel" class="mr-2 w-5 h-5 text-pink-600"></i> Defensoria Pública do Pará (DPE-PA)
+                </h4>
+                <p class="text-sm text-pink-600 mb-3 font-semibold">Tipo: Assistência Jurídica Gratuita (Atendimento na Cidade)</p>
+                <p class="text-gray-600 flex items-start mb-1"><i data-feather="map-pin" class="w-4 h-4 mr-2 mt-1 text-gray-500"></i> **Rua Barão de Guajará, nº 264 - Bairro Castanheira, Vigia/PA**</p>
+                <p class="text-gray-600 flex items-start mb-1"><i data-feather="phone" class="w-4 h-4 mr-2 mt-1 text-gray-500"></i> **129** (Disque Defensoria - Agendamento)</p>
+                <p class="text-orange-600 flex items-start mb-3 font-semibold"><i data-feather="clock" class="w-4 h-4 mr-2 mt-1"></i> Funcionamento: Seg a Sex, **8h às 14h**</p>
+                <a href="http://googleusercontent.com/maps.google.com/7" target="_blank" class="map-link inline-flex items-center text-pink-600 font-bold hover:underline">
+                    Ver no Mapa <i data-feather="external-link" class="ml-1 w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="service-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition border-t-4 border-pink-600" data-aos="zoom-in-up" data-aos-delay="400">
+                <h4 class="text-xl font-bold text-gray-800 mb-2 flex items-center">
+                    <i data-feather="shield" class="mr-2 w-5 h-5 text-pink-600"></i> Delegacia de Polícia Civil (Vigia de Nazaré)
+                </h4>
+                <p class="text-sm text-pink-600 mb-3 font-semibold">Tipo: Segurança Pública - **Registro de Ocorrência Imediata**</p>
+                <p class="text-gray-600 flex items-start mb-1"><i data-feather="map-pin" class="w-4 h-4 mr-2 mt-1 text-gray-500"></i> Generalissimo Deodoro, 894 - Vigia de Nazaré</p>
+                <p class="text-gray-600 flex items-start mb-1"><i data-feather="phone" class="w-4 h-4 mr-2 mt-1 text-gray-500"></i> (91) 3780-1288 (Contato Fixo)</p>
+                <p class="text-green-600 flex items-start mb-3 font-semibold"><i data-feather="clock" class="w-4 h-4 mr-2 mt-1"></i> Funcionamento: **Atendimento 24 Horas**</p>
+                <a href="https://maps.app.goo.gl/354RjS238v3vN8uY6" target="_blank" class="map-link inline-flex items-center text-pink-600 font-bold hover:underline">
+                    Ver no Mapa <i data-feather="external-link" class="ml-1 w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-8 mt-10" data-aos="fade-up">
+        <div class="container mx-auto px-4 text-center">
+
+            <p class="text-xl font-bold mb-4">Telefones Úteis: <span class="text-red-500">180</span> (Denúncia) e <span class="text-red-500">190</span> (Emergência)</p>
+
+           <p class="text-gray-400 mb-2">Secretaria da Mulher e da Diversidade Humana. | Projeto de ensino extensionista</p>
+            <div class="mt-4">
+                <span class="text-xs text-gray-500">Desenvolvido por JOSÉ AIRTON B. S. JUNIOR - fone:(91)983252639</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializa a biblioteca AOS com configurações globais
+            AOS.init({
+                duration: 800, // Duração de 800ms
+                easing: 'ease-in-out', // Suavização de entrada e saída
+                once: true // Anima apenas na primeira vez que o elemento entra na tela
+            });
+
+            // Inicializa os ícones Feather
+            feather.replace();
+        });
+
+        // Mobile menu toggle
+    document.getElementById('menu-btn').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.remove('hidden');
+        // Opcional: Adiciona um efeito de fade
+        // document.getElementById('mobile-menu').style.opacity = '1';
+    });
+
+    document.getElementById('close-menu').addEventListener('click', function() {
+        // Opcional: Adiciona um efeito de fade
+        // document.getElementById('mobile-menu').style.opacity = '0';
+        // setTimeout(() => {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        // }, 300); // 300ms para corresponder à transição, se você usar o fade
+    });
+    </script>
+</body>
+</html>

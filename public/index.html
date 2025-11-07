@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secretaria da Mulher e da Diversidade Humana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        /* Estilo para o Alerta de Emergência (Hero) - Fundo de alerta com nosso gradiente */
+        .emergency-hero {
+            background: linear-gradient(135deg, #f5576c 0%, #a71c35 100%); /* Vermelho/Pink Forte */
+        }
+        /* Botão de Saída Rápida Discreto */
+        .emergency-exit-btn {
+            background-color: #374151; /* Cinza escuro para ser discreto */
+            color: #d1d5db; /* Texto claro */
+            transition: background-color 0.3s;
+        }
+        .emergency-exit-btn:hover {
+            background-color: #1f2937; /* Fundo ainda mais escuro no hover */
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .emergency-btn {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Estilos customizados para a seção de dados */
+        .dado-grande {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .badge-positivo {
+            background-color: #ffe5ee;
+            color: #a80038;
+        }
+        .badge-negativo {
+            background-color: #e5ffe5;
+            color: #008000;
+        }
+        /* Animação de Tremor */
+    @keyframes shake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(-3px); }
+        50% { transform: translateX(3px); }
+        75% { transform: translateX(-3px); }
+        100% { transform: translateX(0); }
+    }
+
+    /* Animação de Pulso (alternativa, se preferir mais suave) */
+    @keyframes pulse-urgent {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+
+    /* Aplica a animação ao botão da viatura */
+    .viatura-btn-urgencia {
+        animation: pulse-urgent 1.5s infinite ease-in-out; /* Pulsação mais suave */
+        /* Se quiser o tremor: animation: shake 0.5s infinite; */
+    }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+
+<a href="https://wa.me/559184129007" class="fixed bottom-20 right-6 bg-red-600 text-white px-6 py-3 rounded-full shadow-xl flex items-center z-50 hover:bg-red-800 transition transform hover:scale-110 viatura-btn-urgencia">
+    <i data-feather="phone-call" class="mr-2 w-5 h-5"></i> VIATURA DA POLÍCIA
+</a>
+
+<a href="https://deamvirtual.pc.pa.gov.br/violencia_contra_mulher/" class="fixed bottom-6 right-6 bg-pink-600 text-white px-6 py-3 rounded-full shadow-lg flex items-center z-50 hover:bg-pink-700 transition transform hover:scale-105">
+    <i data-feather="message-circle" class="mr-2 w-5 h-5"></i> DENUNCIE AGORA !
+</a>
+
+<div class="container mx-auto px-4 py-4 max-w-7xl bg-white shadow-xl min-h-screen">
+
+    <header class="sticky top-0 z-50 bg-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 max-w-7xl flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <img src="https://i.imgur.com/QtGQAZ4.jpeg" width="300px" alt="Logo Secretaria da Mulher">
+            </a>
+
+          <nav class="hidden md:flex space-x-6 items-center">
+                <a href="index.html" class="text-gray-700 hover:text-pink-600 transition font-medium text-lg">Início</a>
+                <a href="violencia.html" class="text-gray-700 hover:text-pink-600 transition font-medium text-lg">Informação</a>
+                <a href="apoio.html" class="text-gray-700 hover:text-pink-600 transition font-medium text-lg">Apoio</a>
+                <a href="ajuda.html" class="bg-red-600 text-white px-5 py-2 rounded-full font-bold shadow-md hover:bg-red-700 transition transform hover:scale-105 flex items-center text-lg">
+                    <i data-feather="map-pin" class="mr-2 w-5 h-5"></i> Onde Buscar Ajuda</a>
+            </nav>
+
+            <button id="menu-btn" class="md:hidden text-gray-700 hover:text-pink-600 transition p-2 focus:outline-none">
+                <i data-feather="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="hidden fixed inset-0 z-50 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center transition-opacity duration-300">
+        <div class="bg-white w-11/12 max-w-md p-8 rounded-xl shadow-2xl relative">
+            <button id="close-menu" class="absolute top-4 right-4 text-gray-600 hover:text-red-600 transition p-2">
+                <i data-feather="x" class="w-7 h-7"></i>
+            </button>
+
+            <nav class="flex flex-col space-y-6 text-center">
+                <a href="index.html" class="text-gray-800 text-2xl font-semibold hover:text-pink-600 transition py-2 border-b">Início</a>
+                <a href="violencia.html" class="text-gray-800 text-2xl font-semibold hover:text-pink-600 transition py-2 border-b">Informação</a>
+                <a href="apoio.html" class="text-gray-800 text-2xl font-semibold hover:text-pink-600 transition py-2 border-b">Apoio</a>
+                <a href="ajuda.html" class="mt-4 bg-red-600 text-white px-5 py-3 rounded-xl font-bold text-xl shadow-lg hover:bg-red-700 transition transform hover:scale-105 flex items-center justify-center">
+                <i data-feather="map-pin" class="mr-2 w-6 h-6"></i> Onde Buscar Ajuda</a>
+            </nav>
+        </div>
+    </div>
+
+
+    <div class="slideshow-container relative w-full h-96 overflow-hidden">
+        <div class="mySlides fade relative w-full h-full">
+            <img src="https://img.freepik.com/fotos-premium/uma-jovem-mulher-jogando-jogos-no-parque-na-grama-verde-estendendo-seus-bracos-e-pernas-em-diferentes-direcoes-caindo-e-sorrindo-na-luz-do-sol-de-verao-foto-de-alta-qualidade_163305-227827.jpg" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+                <div class="text-white text-center text-2xl md:text-3xl lg:text-4xl font-bold leading-tight max-w-2xl mx-auto">
+                    <span class="block mb-2">Você é forte. </span>
+                    <span class="block text-base md:text-xl font-normal">Você merece paz, respeito e uma vida sem medo.</span>
+                    <br>
+                    <a href="ajuda.html" class="inline-block bg-white text-red-600 px-8 py-4 rounded-full font-bold text-xl shadow-2xl hover:bg-gray-100 transition transform hover:scale-105">
+                        <i data-feather="map-pin" class="mr-2 w-6 h-6 inline-block"></i> ONDE BUSCAR AJUDA PERTO DE VOCÊ</a>
+                </div>
+            </div>
+        </div>
+    <div class="mySlides fade relative w-full h-full">
+        <img src="https://img.freepik.com/fotos-gratis/vista-frontal-da-mulher-apreciando-a-grama-na-natureza_23-2148614765.jpg" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div class="text-white text-center text-2xl md:text-3xl lg:text-4xl font-bold leading-tight max-w-2xl mx-auto">
+                <span class="block mb-2">A culpa NUNCA é sua</span>
+                <span class="block text-base md:text-xl font-normal">O agressor é o único responsável pela violência</span>
+                <br>
+                <a href="ajuda.html" class="inline-block bg-white text-red-600 px-8 py-4 rounded-full font-bold text-xl shadow-2xl hover:bg-gray-100 transition transform hover:scale-105">
+                    <i data-feather="map-pin" class="mr-2 w-6 h-6 inline-block"></i> ONDE BUSCAR AJUDA PERTO DE VOCÊ</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade relative w-full h-full">
+            <img src="https://img.freepik.com/fotos-premium/retrato-de-uma-jovem-de-pe-em-um-campo-gramado_1048944-15984502.jpg?semt=ais_hybrid&w=740&q=80" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+                <div class="text-white text-center text-2xl md:text-3xl lg:text-4xl font-bold leading-tight max-w-2xl mx-auto">
+                    <span class="block mb-2">Não importa o quão difícil pareça</span>
+                    <span class="block text-base md:text-xl font-normal">existe ajuda. Você não está sozinha.</span>
+                    <br>
+                    <a href="ajuda.html" class="inline-block bg-white text-red-600 px-8 py-4 rounded-full font-bold text-xl shadow-2xl hover:bg-gray-100 transition transform hover:scale-105">
+                        <i data-feather="map-pin" class="mr-2 w-6 h-6 inline-block"></i> ONDE BUSCAR AJUDA PERTO DE VOCÊ</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade relative w-full h-full">
+            <img src="https://img.freepik.com/fotos-gratis/mulher-sentada-e-meditando-na-grama_23-2147648570.jpg?semt=ais_hybrid&w=740&q=80" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+                <div class="text-white text-center text-2xl md:text-3xl lg:text-4xl font-bold leading-tight max-w-2xl mx-auto">
+                    <span class="block mb-2">Sua voz importa.</span>
+                    <span class="block text-base md:text-xl font-normal"> Seus sentimentos são válidos. Seu futuro é importante.</span>
+                    <br>
+                    <a href="ajuda.html" class="inline-block bg-white text-red-600 px-8 py-4 rounded-full font-bold text-xl shadow-2xl hover:bg-gray-100 transition transform hover:scale-105">
+                        <i data-feather="map-pin" class="mr-2 w-6 h-6 inline-block"></i> ONDE BUSCAR AJUDA PERTO DE VOCÊ</a>
+                </div>
+            </div>
+        </div>
+
+         <div class="mySlides fade relative w-full h-full">
+            <img src="https://img.freepik.com/fotos-premium/mulher-jovem-atenciosa-ao-lado-do-trigo-na-fazenda-durante-um-dia-ensolarado_1048944-4416444.jpg?semt=ais_hybrid&w=740&q=80" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+                <div class="text-white text-center text-2xl md:text-3xl lg:text-4xl font-bold leading-tight max-w-2xl mx-auto">
+                    <span class="block mb-2">A violência não te define.</span>
+                    <span class="block text-base md:text-xl font-normal"> Você é muito mais do que a dor que te causaram.</span>
+                <br>
+                    <a href="ajuda.html" class="inline-block bg-white text-red-600 px-8 py-4 rounded-full font-bold text-xl shadow-2xl hover:bg-gray-100 transition transform hover:scale-105">
+                        <i data-feather="map-pin" class="mr-2 w-6 h-6 inline-block"></i> ONDE BUSCAR AJUDA PERTO DE VOCÊ</a>
+                </div>
+            </div>
+        </div>
+        <div class="mySlides fade relative w-full h-full">
+            <img src="https://img.freepik.com/fotos-gratis/foto-de-retrato-de-uma-mulher-loira-feliz-branca-com-um-vestido-de-verao-deitada-em-um-campo-durante-o-por-do-sol_181624-40824.jpg?semt=ais_hybrid&w=740&q=80" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+                <div class="text-white text-center text-2xl md:text-3xl lg:text-4xl font-bold leading-tight max-w-2xl mx-auto">
+                    <span class="block mb-2">Você tem o direito</span>
+                    <span class="block text-base md:text-xl font-normal"> de ser feliz, de ser segura e de recomeçar.</span>
+                    <br>
+                    <a href="ajuda.html" class="inline-block bg-white text-red-600 px-8 py-4 rounded-full font-bold text-xl shadow-2xl hover:bg-gray-100 transition transform hover:scale-105">
+                        <i data-feather="map-pin" class="mr-2 w-6 h-6 inline-block"></i> ONDE BUSCAR AJUDA PERTO DE VOCÊ</a>
+                </div>
+            </div>
+        </div>
+        <div class="mySlides fade relative w-full h-full">
+            <img src="https://img.freepik.com/fotos-premium/retrato-de-uma-jovem-deitada-no-campo_1048944-9260176.jpg?semt=ais_hybrid&w=740&q=80" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+                <div class="text-white text-center text-2xl md:text-3xl lg:text-4xl font-bold leading-tight max-w-2xl mx-auto">
+                    <span class="block mb-2">Busque apoio.</span>
+                    <span class="block text-base md:text-xl font-normal"> Falar sobre o que aconteceu é um ato de coragem e autocuidado.</span>
+                    <br>
+                    <a href="ajuda.html" class="inline-block bg-white text-red-600 px-8 py-4 rounded-full font-bold text-xl shadow-2xl hover:bg-gray-100 transition transform hover:scale-105">
+                        <i data-feather="map-pin" class="mr-2 w-6 h-6 inline-block"></i> ONDE BUSCAR AJUDA PERTO DE VOCÊ</a>
+                </div>
+            </div>
+        </div>
+        <div class="mySlides fade relative w-full h-full">
+            <img src="https://img.freepik.com/fotos-gratis/vista-superior-de-um-mulher-jovem-chao_23-2148205913.jpg?semt=ais_hybrid&w=740&q=80" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+                <div class="text-white text-center text-2xl md:text-3xl lg:text-4xl font-bold leading-tight max-w-2xl mx-auto">
+                    <span class="block mb-2">Há vida após o trauma.</span>
+                    <span class="block text-base md:text-xl font-normal"> Acredite na sua capacidade de cura e na sua liberdade.</span>
+                    <br>
+                    <a href="ajuda.html" class="inline-block bg-white text-red-600 px-8 py-4 rounded-full font-bold text-xl shadow-2xl hover:bg-gray-100 transition transform hover:scale-105">
+                        <i data-feather="map-pin" class="mr-2 w-6 h-6 inline-block"></i> ONDE BUSCAR AJUDA PERTO DE VOCÊ</a>
+                </div>
+            </div>
+        </div>
+
+        <a class="prev cursor-pointer absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black bg-opacity-50 px-4 py-2 rounded-full text-2xl select-none hover:bg-opacity-75 transition-all duration-300">❮</a>
+        <a class="next cursor-pointer absolute top-1/2 right-4 transform -translate-y-1/2 text-white bg-black bg-opacity-50 px-4 py-2 rounded-full text-2xl select-none hover:bg-opacity-75 transition-all duration-300">❯</a>
+        <div class="dots-container absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+            <span class="dot cursor-pointer h-3 w-3 bg-red-700 rounded-full transition-all duration-300 hover:bg-white"></span>
+            <span class="dot cursor-pointer h-3 w-3 bg-red-700 rounded-full transition-all duration-300 hover:bg-white"></span>
+            <span class="dot cursor-pointer h-3 w-3 bg-red-700 rounded-full transition-all duration-300 hover:bg-white"></span>
+            <span class="dot cursor-pointer h-3 w-3 bg-red-700 rounded-full transition-all duration-300 hover:bg-white"></span>
+            <span class="dot cursor-pointer h-3 w-3 bg-red-700 rounded-full transition-all duration-300 hover:bg-white"></span>
+            <span class="dot cursor-pointer h-3 w-3 bg-red-700 rounded-full transition-all duration-300 hover:bg-white"></span>
+            <span class="dot cursor-pointer h-3 w-3 bg-red-700 rounded-full transition-all duration-300 hover:bg-white"></span>
+            <span class="dot cursor-pointer h-3 w-3 bg-red-700 rounded-full transition-all duration-300 hover:bg-white"></span>
+        </div>
+    </div>
+
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.mySlides');
+        const dots = document.querySelectorAll('.dot');
+        const prev = document.querySelector('.prev');
+        const next = document.querySelector('.next');
+        let timeout;
+
+        function showSlides() {
+            slides.forEach(slide => slide.style.display = 'none');
+            dots.forEach(dot => dot.classList.remove('bg-white'));
+
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+
+            slides[slideIndex - 1].style.display = 'block';
+            dots[slideIndex - 1].classList.add('bg-white');
+
+            timeout = setTimeout(showSlides, 10000);
+        }
+
+        function currentSlide(n) {
+            clearTimeout(timeout);
+            slideIndex = n + 1;
+            showSlides();
+        }
+
+        prev.addEventListener('click', () => {
+            clearTimeout(timeout);
+            slideIndex -= 2;
+            if (slideIndex < 0) {
+                slideIndex = slides.length - 1;
+            }
+            showSlides();
+        });
+
+        next.addEventListener('click', () => {
+            clearTimeout(timeout);
+            showSlides();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide(index);
+            });
+        });
+
+        // Corrigindo a exibição inicial dos dots
+        function showInitialSlide() {
+            slides.forEach(slide => slide.style.display = 'none');
+            dots.forEach(dot => dot.classList.remove('bg-white'));
+            slides[0].style.display = 'block';
+            dots[0].classList.add('bg-white');
+            slideIndex = 1;
+            timeout = setTimeout(showSlides, 10000);
+        }
+
+        showInitialSlide();
+    </script>
+
+  <section class="py-16 px-4 bg-white" data-aos="fade-up" id="secretaria">
+    <div class="container mx-auto max-w-7xl">
+        <h2 class="text-3xl font-extrabold text-pink-700 text-center mb-4 md:text-4xl">
+            A Secretaria da Mulher e da Diversidade Humana
+        </h2>
+        <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            Nosso compromisso é com a garantia de direitos, a equidade de gênero e o reconhecimento das múltiplas identidades que formam a sociedade de Vigia.
+        </p>
+
+        <!--BOTOES DE AÇÃO-->
+    <section class="main-navigation grid md:grid-cols-3 gap-4 my-10" id="botoes-acao" data-aos="fade-up" data-aos-delay="100">
+        <a href="violencia.html" class="nav-block bg-pink-100 text-pink-700 hover:bg-pink-200 p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center font-semibold text-lg transition transform hover:scale-105" data-aos="fade-up" data-aos-delay="200">
+            <i data-feather="book-open" class="mb-2 w-8 h-8"></i> O Que é Violência? (Informação)
+        </a>
+        <a href="ajuda.html" class="nav-block bg-pink-100 text-pink-700 hover:bg-pink-200 p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center font-semibold text-lg transition transform hover:scale-105" data-aos="fade-up" data-aos-delay="300">
+            <i data-feather="map-pin" class="mb-2 w-8 h-8"></i> Onde Buscar Ajuda (Apoio)
+        </a>
+        <a href="apoio.html" class="nav-block bg-pink-100 text-pink-700 hover:bg-pink-200 p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center font-semibold text-lg transition transform hover:scale-105" data-aos="fade-up" data-aos-delay="400">
+            <i data-feather="heart" class="mb-2 w-8 h-8"></i> Como Sair do Ciclo (Recursos)
+        </a>
+    </section>
+    </div>
+</section>
+
+
+    <section class="bg-white py-16 px-4" id="sobre">
+        <div class="container mx-auto flex flex-col md:flex-row items-start gap-10">
+            <div class="md:w-1/2 w-full">
+                <h2 class="text-3xl font-extrabold text-pink-700 text-center mb-12 md:text-4xl md:text-left">
+                    Proteção e Cidadania
+                </h2>
+                <p class="text-gray-800 leading-relaxed mb-6 text-lg font-medium">
+                    O canal digital da SECRETARIA DA MULHER E DA DIVERSIDADE HUMANA (SMDH) DE VIGIA DE NAZARÉ/PA, é um pilar de sustentação da REDE DE ENFRENTAMENTO À DESIGUALDADE E A VIOLÊNCIA no município.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    Ele representa o compromisso inegociável da Gestão com a dignidade, a autonomia e a segurança de cada cidadão e de toda a comunidade que compõe a diversidade humana vigiense. O foco é combater o ciclo da violência e da vulnerabilidade, fornecendo as ferramentas para quebrar esse ciclo.
+                </p>
+                <h4 class="text-2xl font-semibold text-pink-600 mb-3"> Função Estratégica do Portal: </h4>
+                <ul class="space-y-4 text-gray-700 leading-relaxed mb-6">
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-pink-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Publicação de dados sobre leis de proteção e direitos, essencial para a conscientização e empoderamento.
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-pink-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m0 0l2 2m0-2l2 2m-3 0V9a2 2 0 012-2h4l2 2m0 0l2-2"></path></svg>
+                        Guiar vítimas e séus familiares de forma rápida e segura ao serviço público adequado (Segurança, Justiça, Saúde ou Assistência Social).
+                    </li>
+                </ul>
+            </div>
+            <div class="md:w-1/2 w-full mt-8 md:mt-0">
+                <img src="https://img.freepik.com/fotos-gratis/arte-digital-para-a-celebracao-do-dia-internacional-da-mulher-e-os-direitos-das-mulheres_23-2151368501.jpg?semt=ais_hybrid&w=740&q=80" alt="Arte digital que celebra o Dia Internacional da Mulher e os direitos das mulheres" class="w-full h-auto object-cover rounded-lg shadow-xl" >
+            </div>
+        </div>
+    </section>
+
+<section class="py-16 px-4 bg-white" data-aos="fade-up" id="analise">
+    <div class="container mx-auto max-w-6xl">
+        <h2 class="text-3xl font-extrabold text-pink-700 text-center mb-4 md:text-4xl">
+            Análise Completa: Feminicídio, Violência Doméstica e a Diversidade Humana
+        </h2>
+        <p class="text-xl text-gray-600 text-center mb-12">
+            O combate à violência exige uma visão que reconheça as múltiplas realidades das mulheres no Brasil.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-10">
+            <div data-aos="fade-right" data-aos-delay="100">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i data-feather="users" class="text-pink-600 mr-3 w-6 h-6"></i> Violência sob a Lente da Interseccionalidade
+                </h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    A violência contra as mulheres é uma grave violação dos direitos humanos, profundamente enraizada em estruturas formais e informais de poder patriarcal e de gênero. É essencial usar o termo no plural ("violências") para dar visibilidade às **diversidades raciais, étnicas, de orientação sexual, deficiência e socioeconômicas** que tornam algumas mulheres mais vulneráveis.
+                </p>
+                <p class="text-gray-700 mb-6 leading-relaxed">
+                    No Brasil, a violência de gênero atinge de forma desigual. Em **2023**, por exemplo, **64% das vítimas de feminicídio eram mulheres Negras** (Pretas e Pardas), evidenciando a maior vulnerabilidade imposta pelo racismo estrutural e pela desigualdade social. No **Pará**, **32%** das mulheres afirmam já ter sofrido algum tipo de violência doméstica ou familiar.
+                </p>
+            </div>
+
+            <div data-aos="fade-left" data-aos-delay="200">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i data-feather="activity" class="text-pink-600 mr-3 w-6 h-6"></i> Tipos de Violência e Local do Crime
+                </h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    A violência doméstica e familiar compreende diversas formas, não se limitando à agressão física. A violência **psicológica** é um ponto de atenção no **Pará**, onde suas taxas em 2023 foram **56% superiores à média nacional**. Além disso, o feminicídio é um crime essencialmente doméstico:
+                </p>
+                <ul class="space-y-3 text-gray-700 pl-5">
+                    <li class="flex items-start">
+                        <i data-feather="chevron-right" class="text-pink-500 mr-2 flex-shrink-0 mt-1 w-5 h-5"></i> <span class="leading-relaxed">**Local dos Feminicídios:** **59%** dos casos consumados no Brasil (1º sem/2024) ocorreram na **residência da vítima**.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-feather="chevron-right" class="text-pink-500 mr-2 flex-shrink-0 mt-1 w-5 h-5"></i> <span class="leading-relaxed">**Frequência:** Parceiros íntimos e ex-parceiros são responsáveis por quase **80%** dos feminicídios no país.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-feather="chevron-right" class="text-pink-500 mr-2 flex-shrink-0 mt-1 w-5 h-5"></i> <span class="leading-relaxed">**Instrumento Comum:** Armas brancas (facas, objetos cortantes) são o meio mais usado nos feminicídios no Brasil.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="text-xl text-gray-600 text-center mb-12">
+            Acompanhe a evolução dos casos e a busca por ajuda para orientar a prevenção e a resposta da Rede.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-lg transition transform hover:shadow-xl hover:scale-[1.02]" data-aos="zoom-in" data-aos-delay="100">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-gray-800">Feminicídios Consumados no Brasil</h3>
+                    <i data-feather="bar-chart-2" class="text-pink-600 w-6 h-6"></i>
+                </div>
+                <div class="border-b border-gray-200 mb-4 pb-4">
+                    <p class="text-gray-500 text-sm">2023</p>
+                    <div class="w-full bg-red-100 rounded-full h-4 mb-2">
+                        <div class="bg-red-500 h-4 rounded-full" style="width: 75%"></div>
+                    </div>
+                    <p class="text-right text-lg font-semibold text-red-700">1.748 Vítimas</p>
+                </div>
+                <div>
+                    <p class="text-gray-500 text-sm">2024 (Consolidado)</p>
+                    <div class="w-full bg-red-100 rounded-full h-4 mb-2">
+                        <div class="bg-red-500 h-4 rounded-full" style="width: 80%"></div>
+                    </div>
+                    <p class="text-right text-lg font-semibold text-red-700">1.859 Vítimas</p>
+                </div>
+                <p class="mt-4 text-center text-sm font-medium inline-block px-3 py-1 rounded-full text-red-700 bg-red-100">
+                    **Aumento de 6,35% em 2024**
+                </p>
+                <p class="text-xs text-gray-500 mt-2"> Fonte: Monitor de Feminicídios no Brasil (MFB) / LESFEM. </p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg transition transform hover:shadow-xl hover:scale-[1.02]" data-aos="zoom-in" data-aos-delay="200">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-gray-800">Aumento da Busca por Ajuda no Pará</h3>
+                    <i data-feather="trending-up" class="text-pink-600 w-6 h-6"></i>
+                </div>
+                <table class="w-full text-left text-gray-700">
+                    <thead class="text-xs text-gray-500 uppercase">
+                        <tr>
+                            <th scope="col" class="py-2">Tipo</th>
+                            <th scope="col" class="py-2 text-right">2023</th>
+                            <th scope="col" class="py-2 text-right">2024</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-1">Denúncias (Ligue 180)</td>
+                            <td class="py-1 text-right font-medium">2.034</td>
+                            <td class="py-1 text-right font-bold text-pink-700">2.479</td>
+                        </tr>
+                        <tr class="bg-pink-50/50">
+                            <td class="py-1 font-semibold text-pink-700">Atendimentos Totais</td>
+                            <td class="py-1 text-right font-medium">16.746</td>
+                            <td class="py-1 text-right font-bold text-pink-700">18.501</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class="mt-4 text-center text-sm font-medium inline-block px-3 py-1 rounded-full text-green-700 bg-green-100">
+                    Aumento de **21,8%** nas Denúncias (2024)
+                </p>
+                <p class="text-xs text-gray-500 mt-2"> Fonte: Ministério das Mulheres (Dados do Ligue 180). </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-lg transition transform hover:shadow-xl hover:scale-[1.02]" data-aos="zoom-in" data-aos-delay="300">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-gray-800">Tentativas e Perfil da Vítima (Brasil, 1º Sem/2024)</h3>
+                    <i data-feather="pie-chart" class="text-pink-600 w-6 h-6"></i>
+                </div>
+
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center">
+                        <span class="text-gray-700">Feminicídios Consumados</span>
+                        <span class="font-bold text-red-600">905 casos</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <span class="text-gray-700">Feminicídios Tentados</span>
+                        <span class="font-bold text-red-600">1.102 casos</span>
+                    </li>
+                    <li class="flex justify-between items-center border-t pt-2 mt-2">
+                        <span class="text-gray-700">Vítimas Negras (2023)</span>
+                        <span class="font-bold text-red-600">64%</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <span class="text-gray-700">Ocorrência na Residência</span>
+                        <span class="font-bold text-red-600">59%</span>
+                    </li>
+                </ul>
+
+                <p class="mt-4 text-center text-sm font-medium inline-block px-3 py-1 rounded-full text-red-700 bg-red-100">
+                    Mais tentativas do que casos consumados
+                </p>
+                <p class="text-xs text-gray-500 mt-2"> Fonte: MFB/LESFEM (Jan a Jun 2024) e Anuário FBSP (2023). </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!--PARCEIROS DA LUTA--->
+       <section class="bg-white py-16 px-4" data-aos="fade-up">
+    <div class="container mx-auto">
+        <h2 class="text-3xl font-extrabold text-gray-800 text-center mb-12">
+            Nossos Parceiros
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:max-w-6xl mx-auto">
+
+            <div class="bg-white rounded-xl shadow-xl p-6 border-t-4 border-pink-600 hover:shadow-2xl hover:shadow-pink-600/50 transition-shadow duration-300">
+
+                <div class="flex items-center mb-4">
+                    <img src="data:image/png;base64,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" class="h-20 w-20 object-contain mr-4">
+                    <h3 class="text-xl font-bold text-pink-600">Prefeitura de Vigia de Nazaré</h3>
+                </div>
+
+                <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-start">
+                        <i data-feather="map-pin" class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0 mt-1"></i>
+                        <span class="text-sm font-medium">
+                            End.: Rua Professora Noêmia Belém, 578, Centro
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-feather="phone" class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0 mt-1"></i>
+                        <span class="text-sm font-medium">
+                            Fone: (91) 98467-3247
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-feather="clock" class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0 mt-1"></i>
+                        <span class="text-sm font-medium">
+                            Horário de atendimento: **08:00 às 13:00**
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-xl p-6 border-t-4 border-pink-500 hover:shadow-2xl hover:shadow-pink-600/50 transition-shadow duration-300">
+                <div class="flex items-center mb-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgg1UfWQBZdmUDp0OCW6j_CHQaFG8NZm16og&s" alt="Logo Secretaria de Assistência Social" class="h-12 w-12 object-contain mr-4">
+                    <h3 class="text-xl font-bold text-pink-500">Secretaria de Assistência Social (SEMAS)</h3>
+                </div>
+
+                <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-start">
+                        <i data-feather="map-pin" class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0 mt-1"></i>
+                        <span class="text-sm font-medium">
+                            End: R. Professora Noêmia Belém, 232-260
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-feather="clock" class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0 mt-1"></i>
+                        <span class="text-sm font-medium">
+                            Horário de funcionamento: **08:00 às 14:00 (Segunda a Sexta)**
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-feather="info" class="w-5 h-5 text-pink-500 mr-2 flex-shrink-0 mt-1"></i>
+                        <span class="text-sm font-medium">
+                            A SEMAS coordena a política de assistência social no município.
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-xl p-6 border-t-4 border-pink-700 hover:shadow-2xl hover:shadow-pink-700/50 transition-shadow duration-300">
+                <div class="flex items-center mb-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe0CAkPzHl2wiGTBBuL3RVREYbIVLIRRBewA&s" alt="Logo CREAS" class="h-12 w-12 object-contain mr-4">
+                    <h3 class="text-xl font-bold text-pink-700">CREAS - Vigia de Nazaré</h3>
+                </div>
+
+                <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-start">
+                        <i data-feather="map-pin" class="w-5 h-5 text-pink-700 mr-2 flex-shrink-0 mt-1"></i>
+                        <span class="text-sm font-medium">
+                            Santana de Medeiros, 321 - Vigia de Nazaré
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-feather="mail" class="w-5 h-5 text-pink-700 mr-2 flex-shrink-0 mt-1"></i>
+                        <span class="text-sm font-medium">
+                            Email: creasvigiadenazare@gmail.com
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-feather="clock" class="w-5 h-5 text-pink-700 mr-2 flex-shrink-0 mt-1"></i>
+                        <span class="text-sm font-medium">
+                            Horário: Seg a Sex, 8h às 17h (Horário Estimado)
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-xl p-6 border-t-4 border-purple-600 hover:shadow-2xl hover:shadow-purple-700/50 transition-shadow duration-300">
+                <div class="flex items-center mb-4">
+                    <img src="https://www.tjpa.jus.br/PortalExterno/hotsite/anuario-estatistico-2018/resources/img/brasao-tjpa.png" alt="Logo Tribunal de Justiça do Pará" class="h-12 w-12 object-contain mr-4">
+                    <h3 class="text-xl font-bold text-purple-700">Tribunal de Justiça do Pará (TJ-PA)</h3>
+                </div>
+
+                <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-start">
+                        <i data-feather="map-pin" class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0 mt-1"></i>
+                        <span class="text-sm font-medium">
+                            Endereço: Fórum de Vigia, R. Santo Antônio, 375 - Centro (End. Estimado)
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-feather="briefcase" class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0 mt-1"></i>
+                        <span class="text-sm font-medium">
+                            Serviço: Juizado/Vara responsável por emissão de **Medidas Protetivas**.
+                        </span>
+                    </li>
+                    <li class="flex items-start bg-red-50 p-2 rounded-lg border border-red-200">
+                        <i data-feather="alert-triangle" class="w-5 h-5 text-red-600 mr-2 flex-shrink-0 mt-1"></i>
+                        <span class="text-sm font-medium font-semibold text-red-700">
+                            **Plantão Judicial 24h** para urgências. Ligar para **190** ou **180**.
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+    <footer class="bg-gray-800 text-white py-8 mt-10" data-aos="fade-up">
+    <div class="container mx-auto px-4 text-center">
+
+        <p class="text-xl font-bold mb-4">Telefones Úteis: <span class="text-red-500">180</span> (Denúncia) e <span class="text-red-500">190</span> (Emergência)</p>
+
+    <p class="text-gray-400 mb-2">Secretaria da Mulher e da Diversidade Humana. | Projeto de ensino extensionista</p>
+        <div class="mt-4">
+            <span class="text-xs text-gray-500">Desenvolvido por JOSÉ AIRTON B. S. JUNIOR - fone:(91)983252639</span>
+        </div>
+    </div>
+</footer>
+
+
+</div> <script>
+    // Inicializa a biblioteca AOS com configurações globais
+    document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Inicializa os ícones Feather
+        feather.replace();
+    });
+
+    // Mobile menu toggle
+    document.getElementById('menu-btn').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.remove('hidden');
+    });
+
+    document.getElementById('close-menu').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.add('hidden');
+    });
+</script>
+</body>
+</html>

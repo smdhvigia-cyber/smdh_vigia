@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Locais de Apoio e ajuda.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: sans-serif;
+    }
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+
+    /* Estilos dos marcadores (DivIcon) */
+    .custom-div-icon {
+      background: white;
+      border: 1px solid #444;
+      padding: 5px 8px;
+      border-radius: 5px;
+      font-size: 14px;
+      color: #000;
+      box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    /* Estilos do cabeçalho */
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 15px;
+      box-sizing: border-box;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 1.2em;
+      color: #333;
+    }
+    .back-button {
+      background-color: red;
+      color: white;
+      padding: 8px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #b91c1c;
+    }
+
+    /* MEDIA QUERY PARA TELAS MENORES (SMARTPHONES) */
+    @media (max-width: 600px) {
+      /* Ajusta o cabeçalho */
+      .header {
+        flex-direction: column;
+        padding: 10px;
+        text-align: center;
+      }
+      .header h1 {
+        font-size: 1em;
+        margin-bottom: 10px;
+      }
+      .back-button {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+      }
+
+      /* Ajusta os marcadores do mapa */
+      .custom-div-icon {
+        font-size: 12px; /* Reduz o tamanho da fonte */
+        padding: 3px 6px; /* Reduz o padding */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>++ Pontos de APOIO!</h1>
+    <a href="ajuda.html" class="back-button">Voltar para o Site</a>
+  </div>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // Inicializa o mapa centralizado
+    const map = L.map('map', {
+      center: [-0.8565667, -48.1381511],
+      zoom: 12,
+      minZoom: 15.5,
+      maxZoom: 20,
+      zoomControl: true
+    });
+
+    // Camada base OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 30,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Lista de CRAS
+    const crasLocais = [
+    {
+        nome: "ASSISTÊNCIA SOCIAL DE VIGIA DE NAZARÉ",
+        lat: -0.8451863041451555,
+        lon: -48.13965812883606,
+        endereco: "R. Profesora Noêmia Belém, 232-260",
+        Referencia:"",
+      },
+    {
+        nome: "HOSPITAL DE VIGIA",
+        lat: -0.8622603844208228,
+        lon: -48.14197328311768,
+        endereco: "Av Barão do Guajará, Bairro: Castanheira",
+        Referencia:"Frente a Secretaria de Saúde",
+      },
+    {
+        nome: "DELEGACIA DE POLÍCIA DE VIGIA",
+        lat: -0.8641408769875415,
+        lon: -48.12937598364207,
+        endereco: "Generalissimo Deodoro, 894",
+        Referencia:"Frente ao Manto",
+      },
+    {
+        nome: "CORPO DE BOMBEIRO",
+        lat: -0.8553166684535265,
+        lon: -48.14251499316708,
+        endereco: "José Auggusto Corrêa, 230",
+        Referencia:"Tv Marcionilo Alves",
+      },
+     {
+        nome: "CREAS",
+        lat: -0.8497789043564353,
+        lon: -48.13782062703114,
+        endereco: "Santana de Medeiros, 321",
+      },
+     {
+        nome: "Secretaria da Mulher e Diversidade Humana",
+        lat: -0.8480969139181909,
+        lon: -48.13917713807636,
+        endereco: "Rua 31 de agosto, 307"
+      },
+      {
+        nome: "CONSELHO TUTELAR DE VIGIA DE NAZARÉ",
+        lat: -0.8465980528756468,
+        lon: -48.1412318673897,
+        endereco: "Tv. São Sebastião, 112",
+        referencia: "Denuncie:(91) 98489-5280"
+      },
+      {
+        nome: "CRAS Sol Nascente",
+        lat: -0.85158925,
+        lon: -48.13269657,
+        endereco: "Tv. Florival Nogueira, 335 - Sol Nascente",
+        referencia: "Travessa Jaime Sebastião Da Costa"
+      },
+      {
+        nome: "CRAS Vila Nova",
+        lat: -0.859329,
+        lon: -48.13733,
+        endereco: "Rua Agostinho Livramento Silva, 170 - Vila Nova",
+        referencia: "Próximo à Garagem Municipal"
+      }
+    ];
+
+    // Adiciona marcadores com DivIcon (texto fixo)
+    crasLocais.forEach(loc => {
+      const icon = L.divIcon({
+        className: 'custom-div-icon',
+        html: `<strong>${loc.nome}</strong><br>${loc.endereco}`
+      });
+
+      L.marker([loc.lat, loc.lon], {icon: icon})
+        .addTo(map)
+        .bindPopup(`<strong>${loc.nome}</strong><br>${loc.endereco}<br><em>${loc.referencia}</em>`);
+    });
+
+    // Ajusta o mapa para mostrar todos os marcadores
+    const bounds = crasLocais.map(loc => [loc.lat, loc.lon]);
+    map.fitBounds(bounds, {padding: [50, 50]});
+  </script>
+</body>
+</html>
